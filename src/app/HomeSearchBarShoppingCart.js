@@ -101,10 +101,9 @@ export default function HomeSearchBarShoppingCart({ cartItems, increaseQty, decr
         resetDefaultPayment();
     };
 
-    const handlePaymentSelect = (event) => {
-        const selectedId = event.target.value; // Get the selected method id
-        setSelectedPayment(selectedId); // Update selected payment method
-        console.log(`Selected Payment ID: ${selectedId}`);
+    const handlePaymentSelect = (selectedValue) => {
+        setSelectedPayment(selectedValue); // Update selected payment method
+        console.log(`Selected Payment ID: ${selectedValue}`);
     };
 
     const handlePlaceOrder = async () => {

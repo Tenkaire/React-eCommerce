@@ -43,6 +43,12 @@ export default function SellingProductPurchaseModal({ isOpen, onClose, item, inc
         }
     }, [authenticatedUser]);
 
+    useEffect(() => {
+        if (isOpen) {
+            resetDefaultPayment();
+        }
+    }, [isOpen]);
+
     const handleIncrease = () => {
         setQuantity(prevQty => prevQty + 1);
         increaseQty(item.id);
@@ -63,10 +69,9 @@ export default function SellingProductPurchaseModal({ isOpen, onClose, item, inc
         setIsCheckout(false);
     };
 
-    const handlePaymentSelect = (event) => {
-        const selectedId = event.target.value; // Get the selected method id
-        setSelectedPayment(selectedId); // Update selected payment method
-        console.log(`Selected Payment ID: ${selectedId}`);
+    const handlePaymentSelect = (selectedValue) => {
+        setSelectedPayment(selectedValue); // Update selected payment method
+        console.log(`Selected Payment ID: ${selectedValue}`);
     };
 
     const calculateTotal = () => {
@@ -148,7 +153,7 @@ export default function SellingProductPurchaseModal({ isOpen, onClose, item, inc
     return (
         <Modal
             title={purchaseSuccess ? "Order Successful" : isCheckout ? "Checkout" : "Purchase Item"}
-            open={() => {isOpen; resetDefaultPayment();}}
+            open={isOpen}
             onCancel={onClose}
             footer={null}
         >
@@ -239,11 +244,12 @@ export default function SellingProductPurchaseModal({ isOpen, onClose, item, inc
                             {!(paymentMethods.length === 0) && (
                                 <Select
                                     id="paymentMethod"
+                                    style={{ width: "100%", marginBottom: '10px' }}
                                     value={selectedPayment}
                                     onChange={handlePaymentSelect}
-                                    style={{ width: "100%" }}
+                                    disabled={paymentMethods.length === 0}
                                 >
-                                    {paymentMethods.map((method) => (
+                                    {paymentMethods.map(method => (
                                         <Option key={method.card} value={method.card}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                                 <PaymentCardImage cardType={method.detectedType} />
