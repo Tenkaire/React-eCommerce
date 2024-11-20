@@ -1,8 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# React eCommerce Project
 
-## Getting Started
+This is a React-based eCommerce platform that leverages IndexedDB for local data persistence and Ant Design for modern and responsive UI components.
 
-First, run the development server:
+## Instructions and setup
+1. Clone the Repository:
+```bash
+git clone https://github.com/Tenkaire/React-eCommerce.git
+cd React-eCommerce
+```
+2. Install npm
+```bash
+npm install
+```
+
+3. Getting Started
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,7 +27,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
