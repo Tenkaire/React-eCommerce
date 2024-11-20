@@ -1,0 +1,45 @@
+.selling-product {
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.selling-product:hover {
+    background-color: lightgray;
+    border-radius: 8px;
+    transform: scale(1.1);
+}
+
+.product-image {
+    border-radius: 8px;
+}
+
+.button-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.quantity-controls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+@media (max-width: 1100px) {
+    .home-mall-container {
+        width: calc(100% + 100px);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+.no-border-button {
+    border: none;
+    background-color: transparent;
+    padding: 2;
+    cursor: pointer;
+}
+
+.no-arrow-input .ant-input-number-handler-wrap {
+    display: none; /* Hide the up and down arrows */
+}
