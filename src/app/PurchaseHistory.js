@@ -36,14 +36,8 @@ export default function PurchaseHistory({ authenticatedUser, isModalOpen }) {
     };
 
     useEffect(() => {
-        if (isModalOpen) {
-            setVisibleCount(3); // Reset to initial count when modal opens
-        }
-    }, [isModalOpen]);
-
-    useEffect(() => {
         const loadPurchaseHistory = async () => {
-            if (authenticatedUser) {
+            if (isModalOpen && authenticatedUser) {
                 const response = await fetchPurchaseHistory(authenticatedUser);
                 if (response.success) {
                     setPurchases(response.purchases);
@@ -55,7 +49,7 @@ export default function PurchaseHistory({ authenticatedUser, isModalOpen }) {
         };
 
         loadPurchaseHistory();
-    }, [authenticatedUser]);
+    }, [isModalOpen, authenticatedUser]);
 
     return (
         <div className="settings-section">
